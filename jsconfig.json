@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@shine/utils": ["./src/packages/utils"],
+      "@shine/form": ["./src/packages/form"]
+    }
+  }
+}

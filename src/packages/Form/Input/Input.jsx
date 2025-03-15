@@ -34,7 +34,7 @@ export default function MainInput({
               onChange(e.target.value.trimStart());
             }}
             value={changeVlaue || value || ""}
-            className={`main-nput ${errorI18nKey ? "main-nputError" : ""}`}
+            className={`main-nput min-h-[35px] pt-[10px] pr-[18px] pb-[10px] pl-[18px] ${prePendIcon && ' !pr-[45px] '} ${errorI18nKey ? "main-nputError" : ""}`}
           />
           {/* {isSubmitted && (
             <div className="absolute left-2 top-3">

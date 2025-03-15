@@ -181,11 +181,9 @@ body {
   direction: rtl;
 }
 .main-nput {
-  max-height: 35px;
   border: 1px solid #1b3352;
   border-radius: 0.375rem;
   font-size: 16px !important;
-  padding: 10px 18px 10px 18px !important;
   color: #1b3352;
   background-color: transparent;
 }

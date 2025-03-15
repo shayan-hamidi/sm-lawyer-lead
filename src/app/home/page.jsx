@@ -6,6 +6,7 @@ import lawHammer from "@/images/lawHammer.png";
 import { FormProvider, useForm } from "react-hook-form";
 import { MainInput } from "@/packages";
 import Button from "@mui/material/Button";
+import { Grid } from "@mui/material";
 
 export default function Servey() {
   const route = useRouter();
@@ -38,11 +39,12 @@ export default function Servey() {
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit((data) => {
-            submit(data);
+            console.log(data);
+            route.push("/submit");
           })}
         >
           {/* Section 1 */}
-          <section className="w-full py-12 px-8 bg-[#f0f0f0] flex items-center gap-4">
+          <section className="flex-col sm:flex-row w-full py-12 px-8 bg-[#f0f0f0] flex items-center gap-4">
             <div className="self-baseline">
               <h2 className="text-3xl font-semibold">خدمة تقديم شكوى</h2>
               <p className="mt-4 text-lg">
@@ -51,7 +53,7 @@ export default function Servey() {
               </p>
             </div>
             <div>
-              <Image src={lawHammer} alt="lawHammer" width={200} />
+              <Image src={lawHammer} alt="lawHammer" width={150} />
             </div>
           </section>
           <div className="mx-8">
@@ -59,14 +61,14 @@ export default function Servey() {
             <section className="w-full pt-12 bg-white relative">
               <div className="bg-[#505050] rounded-tl-[8px] rounded-tr-[8px] absolute left-0 right-0 h-3" />
               <div className="border-[1px] rounded-[8px] pt-8">
-                <h2 className="text-3xl font-semibold px-4">
+                <h2 className="text-3xl px-4">
                   سجّل شكواك الآن لاسترداد أموالك!
                 </h2>
-                <p className="mt-4 text-lg px-4">
+                <p className="mt-4 px-4">
                   لضمان معالجة شكواك بكفاءة، يرجى تعبئة الاستمارة بشكل كامل
                   وإضافة أي تفاصيل قد تكون مفيدة لاسترجاع أموالك.
                 </p>
-                <div className="border-[1px] mt-8 flex items-center justify-end py-3 px-4 text-[#d92e25]">
+                <div className="border-[1px] mt-8 flex items-center justify-end py-3 px-4 text-[#d92e25] text-sm">
                   Indicates required question *
                 </div>
               </div>
@@ -77,18 +79,19 @@ export default function Servey() {
                 <h5 className="text-1xl font-semibold px-4 mb-3">
                   الاسم الكامل: <span className="text-[#d92e25]">*</span>
                 </h5>
-                <MainInput
-                  name={"name"}
-                  rules={{
-                    required: " ",
-                  }}
-                  inputProps={{
-                    placeholder: "إجابتك",
-                    style: {
-                      width: "30%",
-                    },
-                  }}
-                />
+                <Grid container>
+                  <Grid item xs={12} sm={7} md={5} lg={4}>
+                    <MainInput
+                      name={"name"}
+                      rules={{
+                        required: " ",
+                      }}
+                      inputProps={{
+                        placeholder: "إجابتك",
+                      }}
+                    />
+                  </Grid>
+                </Grid>
               </div>
             </section>
             {/* Section 4 */}
@@ -98,18 +101,19 @@ export default function Servey() {
                   رقم الهاتف:
                   <span className="text-[#d92e25]">*</span>
                 </h5>
-                <MainInput
-                  name={"number"}
-                  rules={{
-                    required: " ",
-                  }}
-                  inputProps={{
-                    placeholder: "إجابتك",
-                    style: {
-                      width: "30%",
-                    },
-                  }}
-                />
+                <Grid container>
+                  <Grid item xs={12} sm={7} md={5} lg={4}>
+                    <MainInput
+                      name={"number"}
+                      rules={{
+                        required: " ",
+                      }}
+                      inputProps={{
+                        placeholder: "إجابتك",
+                      }}
+                    />
+                  </Grid>
+                </Grid>
               </div>
             </section>
             {/* Section 5 */}
@@ -119,18 +123,19 @@ export default function Servey() {
                   تفاصيل الشكوى:
                   <span className="text-[#d92e25]">*</span>
                 </h5>
-                <MainInput
-                  name={"description"}
-                  rules={{
-                    required: " ",
-                  }}
-                  inputProps={{
-                    placeholder: "إجابتك",
-                    style: {
-                      width: "30%",
-                    },
-                  }}
-                />
+                <Grid container>
+                  <Grid item xs={12} sm={7} md={5} lg={4}>
+                    <MainInput
+                      name={"description"}
+                      rules={{
+                        required: " ",
+                      }}
+                      inputProps={{
+                        placeholder: "إجابتك",
+                      }}
+                    />
+                  </Grid>
+                </Grid>
               </div>
             </section>
             <section className="w-full py-3">
@@ -139,6 +144,7 @@ export default function Servey() {
                 type="submit"
                 sx={{
                   backgroundColor: "#1565c0 !important",
+                  minWidth: 100,
                 }}
               >
                 يُقدِّم

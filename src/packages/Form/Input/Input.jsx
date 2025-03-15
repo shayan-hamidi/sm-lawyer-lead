@@ -36,7 +36,7 @@ export default function MainInput({
             value={changeVlaue || value || ""}
             className={`main-nput ${errorI18nKey ? "main-nputError" : ""}`}
           />
-          {isSubmitted && (
+          {/* {isSubmitted && (
             <div className="absolute left-2 top-3">
               {errorI18nKey ? (
                 <ErrorOutlineIcon sx={{ color: "#dc3545" }} fontSize="small" />
@@ -44,7 +44,7 @@ export default function MainInput({
                 <CheckIcon sx={{ color: "#198754" }} fontSize="small" />
               )}
             </div>
-          )}
+          )} */}
           <div>{errorI18nKey && <span>{errorI18nKey}</span>}</div>
         </div>
       )}

@@ -14,7 +14,7 @@ export default function useService() {
           url,
           method,
           data: body,
-          responseType: url.includes("Excel") && "blob", // The body object is automatically handled by axios
+          responseType: url.includes("export") && "blob", // The body object is automatically handled by axios
           headers: {
             "Content-Type": "application/json",
             accept: "application/json",

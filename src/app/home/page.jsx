@@ -7,11 +7,26 @@ import { FormProvider, useForm } from "react-hook-form";
 import { MainInput } from "@/packages";
 import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
+import useService from "@/hooks/useService";
 
 export default function Servey() {
   const route = useRouter();
   const methods = useForm();
-
+  const { loading, mutate } = useService();
+  const submitForm = (data) => {
+    mutate(
+      "claim",
+      "POST",
+      { ...data },
+      {},
+      () => {
+        route.push("/submit");
+      },
+      (error) => {
+        console.error("Error:", error);
+      }
+    );
+  };
   return (
     <main className="relative flex flex-col items-center">
       {/* Image background */}
@@ -39,8 +54,7 @@ export default function Servey() {
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit((data) => {
-            console.log(data);
-            route.push("/submit");
+            submitForm(data);
           })}
         >
           {/* Section 1 */}
@@ -107,6 +121,10 @@ export default function Servey() {
                       name={"number"}
                       rules={{
                         required: " ",
+                        pattern: {
+                          value: /^[0-9]+$/,
+                          message: "يرجى إدخال أرقام فقط",
+                        },
                       }}
                       inputProps={{
                         placeholder: "إجابتك",
@@ -146,6 +164,7 @@ export default function Servey() {
                   backgroundColor: "#1565c0 !important",
                   minWidth: 100,
                 }}
+                disabled={loading}
               >
                 يُقدِّم
               </Button>

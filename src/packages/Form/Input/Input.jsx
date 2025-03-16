@@ -34,7 +34,9 @@ export default function MainInput({
               onChange(e.target.value.trimStart());
             }}
             value={changeVlaue || value || ""}
-            className={`main-nput min-h-[35px] pt-[10px] pr-[18px] pb-[10px] pl-[18px] ${prePendIcon && ' !pr-[45px] '} ${errorI18nKey ? "main-nputError" : ""}`}
+            className={`main-nput min-h-[35px] pt-[10px] pr-[18px] pb-[10px] pl-[18px] ${
+              prePendIcon && " !pr-[45px] "
+            } ${errorI18nKey ? "main-nputError" : ""}`}
           />
           {/* {isSubmitted && (
             <div className="absolute left-2 top-3">
@@ -45,7 +47,9 @@ export default function MainInput({
               )}
             </div>
           )} */}
-          <div>{errorI18nKey && <span>{errorI18nKey}</span>}</div>
+          <div style={{ marginTop: "10px", color: "#dc3545",fontSize:14 }}>
+            {errorI18nKey && <span>{errorI18nKey}</span>}
+          </div>
         </div>
       )}
     />

@@ -16,35 +16,44 @@ const DashboardPanel = () => {
   const { mutate: logoutMutate, loading: logoutLoading } = useService();
   const { mutate: Q1ExcellMutate, loading: Q1ExcellLoading } = useService();
   const router = useRouter();
-  // const columns = [
-  //   {
-  //     field: "fullName",
-  //     headerName: "الاسم الكامل",
-  //     sortable: false,
-  //     disableColumnMenu: true,
-  //     headerAlign: "right",
-  //     align: "right",
-  //   },
-  //   {
-  //     field: "phoneNumber",
-  //     headerName: "رقم التليفون",
-  //     width: 150,
-  //     sortable: false,
-  //     disableColumnMenu: true,
-  //     headerAlign: "right",
-  //     align: "right",
-  //   },
-  // ];
-  // useEffect(() => {
-  //   chartMutate(
-  //     "getQuestionnariesChartData",
-  //     "GET",
-  //     {},
-  //     {
-  //       Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-  //     }
-  //   );
-  // }, []);
+  const columns = [
+    {
+      field: "name",
+      headerName: "الاسم الكامل",
+      sortable: false,
+      disableColumnMenu: true,
+      headerAlign: "right",
+      align: "right",
+    },
+    {
+      field: "number",
+      headerName: "رقم الهاتف",
+      width: 150,
+      sortable: false,
+      disableColumnMenu: true,
+      headerAlign: "right",
+      align: "right",
+    },
+    {
+      field: "description",
+      headerName: "تفاصيل الشكوى",
+      width: 150,
+      sortable: false,
+      disableColumnMenu: true,
+      headerAlign: "right",
+      align: "right",
+    },
+  ];
+  useEffect(() => {
+    chartMutate(
+      "getQuestionnariesChartData",
+      "GET",
+      {},
+      {
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      }
+    );
+  }, []);
   const logoutHandler = () => {
     logoutMutate(
       "logout",
@@ -118,7 +127,7 @@ const DashboardPanel = () => {
         <div className="flex gap-3 flex-wrap justify-between">
           <Card className="w-full xl:w-[48%] mt-9 mx-auto flex flex-col justify-center p-4 shadow-lg">
             <div className="mb-5 flex items-center justify-between">
-              {/* <h3 className="font-bold text-[20px]">Table</h3> */}
+              <h3 className="font-bold text-[20px]">Table</h3>
               <Button
                 className="px-3 py-2 bg-blue-600"
                 variant="contained"
@@ -137,9 +146,9 @@ const DashboardPanel = () => {
                 )}
               </Button>
             </div>
-            {/* <div lang="fa" className="flex gap-1 flex-wrap justify-between">
-              <Table url={"getAllFirstQuestionnaries"} columns={columns} />
-            </div> */}
+            <div lang="fa" className="flex gap-1 flex-wrap justify-between">
+              <Table url={"getAllClaims"} columns={columns} />
+            </div>
           </Card>
         </div>
         {/* <Card className="w-max mt-9 mx-auto min-w-full md:min-w-[500px] flex flex-col justify-center p-4 shadow-lg">

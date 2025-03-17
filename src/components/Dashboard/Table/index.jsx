@@ -44,7 +44,7 @@ export default function DataTable({ url, columns }) {
   }, [rows]);
 
   return (
-    <div style={{ height: 500, width: "100%" }}>
+    <div style={{ width: "100%" }}>
       <DataGrid
         localeText={"fa"}
         loading={tableLoading}
@@ -57,6 +57,16 @@ export default function DataTable({ url, columns }) {
         paginationMode="server"
         paginationModel={pagination}
         onPaginationModelChange={setPagination}
+        density="compact"
+        autoHeight
+        disableColumnMenu
+        disableColumnSelector
+        disableRowSelectionOnClick
+        showCellVerticalBorder
+        disableDensitySelector
+        disableAutosize
+        disableVirtualization
+        disableColumnResize
       />
     </div>
   );

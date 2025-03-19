@@ -157,17 +157,23 @@ export default function Servey() {
               </div>
             </section>
             <section className="w-full py-3">
-              <Button
-                variant="contained"
-                type="submit"
-                sx={{
-                  backgroundColor: "#1565c0 !important",
-                  minWidth: 100,
-                }}
-                disabled={loading}
-              >
-                يُقدِّم
-              </Button>
+              <Grid container>
+                <Grid item xs={12} md={3} lg={2}>
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    fullWidth
+                    sx={{
+                      backgroundColor: "#1565c0 !important",
+                      fontSize: 21,
+                      boxShadow: 3,
+                    }}
+                    disabled={loading}
+                  >
+                    يُقدِّم
+                  </Button>
+                </Grid>
+              </Grid>
             </section>
           </div>
         </form>

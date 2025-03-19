@@ -26,10 +26,12 @@ export default function DataTable({ url, columns }) {
   }, [pagination]);
   const modifiedColumns = useMemo(() => {
     return [
+      ...columns,
       {
         field: "row",
         headerName: "صف",
         width: 50,
+        sortable: false,
         editable: false,
         renderCell: (params) => {
           const { page, pageSize } = pagination;
@@ -39,7 +41,6 @@ export default function DataTable({ url, columns }) {
           return rowNumber;
         },
       },
-      ...columns,
     ];
   }, [rows]);
 
@@ -48,7 +49,7 @@ export default function DataTable({ url, columns }) {
       <DataGrid
         localeText={"fa"}
         loading={tableLoading}
-        sx={{ background: "white" }}
+        sx={{ background: "white", boxShadow: 5 }}
         className="shadow-md"
         rows={rows}
         columns={modifiedColumns}

@@ -1,18 +1,15 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Table from "./Table";
 import useService from "@/hooks/useService";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
-import { Card, CircularProgress, Divider } from "@mui/material";
+import { Card, CircularProgress } from "@mui/material";
 import { useRouter } from "next/navigation";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
-import { handleValue } from "./handleValue";
-import BarChart from "./BarChart";
 
 const DashboardPanel = () => {
-  const { mutate: chartMutate, data: chartData } = useService();
   const { mutate: logoutMutate, loading: logoutLoading } = useService();
   const { mutate: Q1ExcellMutate, loading: Q1ExcellLoading } = useService();
   const router = useRouter();
@@ -24,6 +21,7 @@ const DashboardPanel = () => {
       disableColumnMenu: true,
       headerAlign: "right",
       align: "right",
+      flex: 1,
     },
     {
       field: "number",
@@ -33,6 +31,7 @@ const DashboardPanel = () => {
       disableColumnMenu: true,
       headerAlign: "right",
       align: "right",
+      flex: 1,
     },
     {
       field: "description",
@@ -42,18 +41,9 @@ const DashboardPanel = () => {
       disableColumnMenu: true,
       headerAlign: "right",
       align: "right",
+      flex: 1,
     },
   ];
-  useEffect(() => {
-    chartMutate(
-      "getQuestionnariesChartData",
-      "GET",
-      {},
-      {
-        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-      }
-    );
-  }, []);
   const logoutHandler = () => {
     logoutMutate(
       "logout",
@@ -151,15 +141,6 @@ const DashboardPanel = () => {
             </div>
           </Card>
         </div>
-        {/* <Card className="w-max mt-9 mx-auto min-w-full md:min-w-[500px] flex flex-col justify-center p-4 shadow-lg">
-          <div className="mb-5">
-            <h3 className="font-bold text-[20px]">Registration statistics</h3>
-            <Divider orientation="horizontal" flexItem className="my-4" />
-          </div>
-          <div className="max-w-[500px]">
-            <BarChart chartData={chartData} />
-          </div>
-        </Card> */}
       </div>
     </div>
   );

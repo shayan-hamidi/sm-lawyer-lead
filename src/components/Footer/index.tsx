@@ -141,6 +141,7 @@ export default function Footer() {
                   boxShadow: 3,
                   mt: 3,
                 }}
+                onClick={handleClose}
               >
                 لقد فهمت
               </Button>

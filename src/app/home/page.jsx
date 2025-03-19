@@ -6,11 +6,21 @@ import lawHammer from "@/images/lawHammer.png";
 import { FormProvider, useForm } from "react-hook-form";
 import { MainInput } from "@/packages";
 import Button from "@mui/material/Button";
-import { Grid, Typography } from "@mui/material";
+import { Grid, IconButton, Typography } from "@mui/material";
 import useService from "@/hooks/useService";
 import Footer from "@/components/Footer";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 export default function Servey() {
+  const scrollToForm = () => {
+    const element = document.getElementById("form-container");
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
   const route = useRouter();
   const methods = useForm();
   const { loading, mutate } = useService();
@@ -51,6 +61,26 @@ export default function Servey() {
             بالاحترافية والتفاني في تقديم استشارات قانونية مبتكرة وحلول عملية
             تناسب احتياجات عملائنا
           </Typography>
+          <IconButton
+            sx={{
+              border: "1px solid white",
+              position: "absolute",
+              bottom: 10,
+            }}
+            onClick={scrollToForm}
+          >
+            <KeyboardArrowDownIcon
+              fontSize="large"
+              sx={{
+                color: "white",
+                animation: "bounce 2s infinite",
+                "@keyframes bounce": {
+                  "0%, 100%": { transform: "translateY(0)" },
+                  "50%": { transform: "translateY(6px)" },
+                },
+              }}
+            />
+          </IconButton>
         </div>
       </div>
       <FormProvider {...methods}>
@@ -75,7 +105,10 @@ export default function Servey() {
           <div className="mx-8">
             {/* Section 2 */}
             <section className="w-full pt-12 bg-white relative">
-              <div className="bg-[#505050] rounded-tl-[8px] rounded-tr-[8px] absolute left-0 right-0 h-3" />
+              <div
+                className="bg-[#505050] rounded-tl-[8px] rounded-tr-[8px] absolute left-0 right-0 h-3"
+                id="form-container"
+              />
               <div className="border-[1px] rounded-[8px] pt-8">
                 <h2 className="text-3xl px-4">
                   سجّل شكواك الآن لاسترداد أموالك!

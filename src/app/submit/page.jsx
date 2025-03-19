@@ -7,12 +7,21 @@ import { FormProvider, useForm } from "react-hook-form";
 import { MainInput } from "@/packages";
 import Button from "@mui/material/Button";
 import Link from "next/link";
-import { Typography } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 export default function SubmitPage() {
   const route = useRouter();
   const methods = useForm();
-
+  const scrollToForm = () => {
+    const element = document.getElementById("form-container");
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
   return (
     <main className="relative flex flex-col items-center">
       {/* Image background */}
@@ -36,6 +45,26 @@ export default function SubmitPage() {
             بالاحترافية والتفاني في تقديم استشارات قانونية مبتكرة وحلول عملية
             تناسب احتياجات عملائنا
           </Typography>
+          <IconButton
+            sx={{
+              border: "1px solid white",
+              position: "absolute",
+              bottom: 10,
+            }}
+            onClick={scrollToForm}
+          >
+            <KeyboardArrowDownIcon
+              fontSize="large"
+              sx={{
+                color: "white",
+                animation: "bounce 2s infinite",
+                "@keyframes bounce": {
+                  "0%, 100%": { transform: "translateY(0)" },
+                  "50%": { transform: "translateY(6px)" },
+                },
+              }}
+            />
+          </IconButton>
         </div>
       </div>
       {/* Section 1 */}
@@ -55,7 +84,7 @@ export default function SubmitPage() {
         {/* Section 2 */}
         <section className="w-full pt-12 bg-white relative">
           <div className="bg-[#505050] rounded-tl-[8px] rounded-tr-[8px] absolute left-0 right-0 h-3" />
-          <div className="border-[1px] rounded-[8px] py-8">
+          <div className="border-[1px] rounded-[8px] py-8" id="form-container">
             <h2 className="text-3xl px-4">سجّل شكواك الآن لاسترداد أموالك!</h2>
             <p className="mt-4 px-4">تم تسجيل الشكوى بنجاح</p>
             <p className="mt-4 px-4 mb-5">

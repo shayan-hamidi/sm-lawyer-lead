@@ -6,8 +6,9 @@ import lawHammer from "@/images/lawHammer.png";
 import { FormProvider, useForm } from "react-hook-form";
 import { MainInput } from "@/packages";
 import Button from "@mui/material/Button";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import useService from "@/hooks/useService";
+import Footer from "@/components/Footer";
 
 export default function Servey() {
   const route = useRouter();
@@ -30,7 +31,7 @@ export default function Servey() {
   return (
     <main className="relative flex flex-col items-center">
       {/* Image background */}
-      <div className="relative w-full h-screen">
+      <div className="relative w-full h-[70vh] md:h-[90vh] lg:h-screen">
         <Image
           src={lawPicture}
           alt="lawPicture"
@@ -38,17 +39,18 @@ export default function Servey() {
           objectFit="cover"
           className="z-0"
         />
+        <div className="absolute inset-0 bg-black/50 z-0"></div>
         <div className="absolute inset-0 flex justify-center items-center z-10 text-center px-4 py-2 flex-col">
           <h1 className="text-4xl md:text-5xl font-bold text-[#fff2cc]">
             مرحباً بكم في للمحاماة
           </h1>
-          <p className="mt-10 text-lg md:text-xl text-[#ded8be]">
+          <Typography className="mt-10 text-lg md:text-xl text-[#ded8be] leading-relaxed md:leading-loose">
             في شركة نؤمن بأن العدالة ليست مجرد فكرة، بل هي جوهر عملنا اليومي.
             تتجاوز خدماتنا حدود المحامالتقليدية، حيث نضع بين أيدي عملائنا خبرة
             قانونية تمتد عبر مختلف القطاعات والميادين. تميزنا ينبع من التزامنا
             بالاحترافية والتفاني في تقديم استشارات قانونية مبتكرة وحلول عملية
             تناسب احتياجات عملائنا
-          </p>
+          </Typography>
         </div>
       </div>
       <FormProvider {...methods}>
@@ -58,16 +60,16 @@ export default function Servey() {
           })}
         >
           {/* Section 1 */}
-          <section className="flex-col sm:flex-row w-full py-12 px-8 bg-[#f0f0f0] flex items-center gap-4">
+          <section className="flex-col sm:flex-row w-full py-4 px-8 bg-[#f0f0f0] flex items-center gap-4">
             <div className="self-baseline">
               <h2 className="text-3xl font-semibold">خدمة تقديم شكوى</h2>
-              <p className="mt-4 text-lg">
+              <p className="mt-2 text-md">
                 نحن هنا لمساعدتك في تقديم بلاغات وشكاوى تتعلق بالاحتيال المالي،
                 حيث نقوم بفحص وتحليل البلاغات بجدية واحترافية لحمايتك.
               </p>
             </div>
             <div>
-              <Image src={lawHammer} alt="lawHammer" width={150} />
+              <Image src={lawHammer} alt="lawHammer" width={130} />
             </div>
           </section>
           <div className="mx-8">
@@ -178,9 +180,7 @@ export default function Servey() {
           </div>
         </form>
       </FormProvider>
-      <div className="bg-[#f0f0f0] w-full mt-20 py-10 text-center">
-        <b className="text-[13px]">حقوق النشر © 2025 جميع الحقوق محفوظة</b>
-      </div>
+      <Footer />
     </main>
   );
 }

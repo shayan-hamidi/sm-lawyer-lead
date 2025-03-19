@@ -16,7 +16,9 @@ export default function DataTable({ url, columns }) {
       "GET",
       {},
       {
-        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        Authorization: window.localStorage.getItem("token")
+          ? `Bearer ${window.localStorage.getItem("token")}`
+          : undefined,
       },
       (data) => {
         setTotal(data.total);

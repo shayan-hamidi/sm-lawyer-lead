@@ -7,6 +7,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { MainInput } from "@/packages";
 import Button from "@mui/material/Button";
 import Link from "next/link";
+import { Typography } from "@mui/material";
 
 export default function SubmitPage() {
   const route = useRouter();
